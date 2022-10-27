@@ -248,7 +248,7 @@ export async function paginate<T>(
     console.log(getMetadataArgsStorage());
     for (const order of sortBy) {
         console.log(order);
-        if (order[0].split('.').length > 1) {
+        if (order[0].split('.').length > 1 && !getMetadataArgsStorage().embeddeds.some((val) => {return val.propertyName == order[0].split('.')[0];})) {
             queryBuilder.addOrderBy(`${queryBuilder.alias}_${order[0]}`, order[1], nullSort)
         } else {
             queryBuilder.addOrderBy(`${queryBuilder.alias}.${order[0]}`, order[1], nullSort)
