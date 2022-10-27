@@ -244,7 +244,9 @@ export async function paginate<T>(
         nullSort = config.nullSort === 'last' ? 'NULLS LAST' : 'NULLS FIRST'
     }
 
+    console.log(sortBy);
     for (const order of sortBy) {
+        console.log(order);
         if (order[0].split('.').length > 1) {
             queryBuilder.addOrderBy(`${queryBuilder.alias}_${order[0]}`, order[1], nullSort)
         } else {
