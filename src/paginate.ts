@@ -13,7 +13,7 @@ import {
     ILike,
     Brackets,
     Between,
-    FindOptionsWhere,
+    FindOptionsWhere, getMetadataArgsStorage,
 } from 'typeorm'
 import { PaginateQuery } from './decorator'
 import { ServiceUnavailableException } from '@nestjs/common'
@@ -245,6 +245,7 @@ export async function paginate<T>(
     }
 
     console.log(sortBy);
+    console.log(getMetadataArgsStorage());
     for (const order of sortBy) {
         console.log(order);
         if (order[0].split('.').length > 1) {
